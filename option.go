@@ -8,15 +8,24 @@ import (
 )
 
 const (
-	Name              string = "distributed_lock"
-	DefaultLogLevel   int    = 0
-	DefaultLoggerName string = "distributed_lock"
-	DefaultTable      string = "distributed_lock"
-	DefaultTTLField   string = "expiration_time"
-	DefaultLockField  string = "lock_id"
-	DefaultMap        string = "distributed_lock"
-	DefaultDatabase   string = "distributed_lock"
-	DefaultCollection string = "locks"
+	// Name represents the default name of the distributed lock package.
+	Name = "distributed_lock"
+	// DefaultLogLevel defines the default logging level (0 usually means "info" or "debug").
+	DefaultLogLevel = 0
+	// DefaultLoggerName specifies the default logger name for logging events related to distributed locks.
+	DefaultLoggerName = "distributed_lock"
+	// DefaultTable defines the default table name for storing locks in relational databases like PostgreSQL.
+	DefaultTable = "distributed_lock"
+	// DefaultTTLField specifies the field name used to store the lock expiration time.
+	DefaultTTLField = "expiration_time"
+	// DefaultLockField represents the field name used to store the lock identifier.
+	DefaultLockField = "lock_id"
+	// DefaultMap defines the default map name used in Hazelcast for storing locks.
+	DefaultMap = "distributed_lock"
+	// DefaultDatabase specifies the default database name used in MongoDB or other NoSQL backends.
+	DefaultDatabase = "distributed_lock"
+	// DefaultCollection defines the default collection name for storing locks in MongoDB.
+	DefaultCollection = "locks"
 )
 
 // OptionFunc A function type used to apply custom configurations to LockConfig.

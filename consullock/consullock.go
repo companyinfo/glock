@@ -154,7 +154,7 @@ func (c *ConsulLock) AcquireWithRetry(
 }
 
 // Renew extends the TTL of an existing lock.
-func (c *ConsulLock) Renew(ctx context.Context, lockID string, ttl int64) error {
+func (c *ConsulLock) Renew(ctx context.Context, lockID string, _ int64) error {
 	startTime := time.Now()
 	ctx, span := glock.RecordStart(ctx, glock.BackendConsul, glock.ActionRenew, lockID)
 	defer span.End()

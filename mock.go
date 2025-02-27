@@ -21,7 +21,7 @@ func NewMockLock() *MockLock {
 }
 
 // Acquire simulates acquiring a lock.
-func (m *MockLock) Acquire(ctx context.Context, lockID string, ttl int64) error {
+func (m *MockLock) Acquire(_ context.Context, lockID string, ttl int64) error {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
 
@@ -37,7 +37,7 @@ func (m *MockLock) Acquire(ctx context.Context, lockID string, ttl int64) error 
 }
 
 // Release simulates releasing a lock.
-func (m *MockLock) Release(ctx context.Context, lockID string) error {
+func (m *MockLock) Release(_ context.Context, lockID string) error {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
 
@@ -79,7 +79,7 @@ func (m *MockLock) AcquireWithRetry(
 }
 
 // Renew simulates renewing a lock.
-func (m *MockLock) Renew(ctx context.Context, lockID string, ttl int64) error {
+func (m *MockLock) Renew(_ context.Context, lockID string, ttl int64) error {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
 

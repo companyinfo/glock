@@ -10,23 +10,37 @@ import (
 )
 
 const (
-	// List of distributed locking actions.
-	ActionAcquire              = "acquire"
-	ActionRelease              = "release"
-	ActionRenew                = "renew"
+	// ActionAcquire represents the action of attempting to acquire a lock.
+	ActionAcquire = "acquire"
+	// ActionRelease represents the action of releasing a previously acquired lock.
+	ActionRelease = "release"
+	// ActionRenew represents the action of extending the expiration time of a lock.
+	ActionRenew = "renew"
+	// ActionAcquiredSuccessfully indicates that a lock was successfully acquired.
 	ActionAcquiredSuccessfully = "acquired"
+	// ActionReleasedSuccessfully indicates that a lock was successfully released.
 	ActionReleasedSuccessfully = "released"
-	ActionRenewedSuccessfully  = "renewed"
+	// ActionRenewedSuccessfully indicates that a lock was successfully renewed.
+	ActionRenewedSuccessfully = "renewed"
+)
 
-	// List of backend tools.
-	BackendConsul    = "consul"
-	BackendEtcd      = "etcd"
-	BackendDynamoDB  = "dynamodb"
+const (
+	// BackendConsul represents Consul as a distributed locking backend.
+	BackendConsul = "consul"
+	// BackendEtcd represents etcd as a distributed locking backend.
+	BackendEtcd = "etcd"
+	// BackendDynamoDB represents AWS DynamoDB as a distributed locking backend.
+	BackendDynamoDB = "dynamodb"
+	// BackendHazelcast represents Hazelcast as a distributed locking backend.
 	BackendHazelcast = "hazelcast"
-	BackendMongoDB   = "mongodb"
-	BackendRedis     = "redis"
+	// BackendMongoDB represents MongoDB as a distributed locking backend.
+	BackendMongoDB = "mongodb"
+	// BackendRedis represents Redis as a distributed locking backend.
+	BackendRedis = "redis"
+	// BackendZooKeeper represents Apache ZooKeeper as a distributed locking backend.
 	BackendZooKeeper = "zookeeper"
-	BackendPostgres  = "postgres"
+	// BackendPostgres represents PostgreSQL as a distributed locking backend.
+	BackendPostgres = "postgres"
 )
 
 // Lock defines the interface for distributed locking.
