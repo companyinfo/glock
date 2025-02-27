@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  consul:
+    image: hashicorp/consul:latest
+    container_name: consul
+    ports:
+      - "8500:8500"  # Web UI & API
+      - "8600:8600/udp"  # DNS service
+    command: "agent -dev -client=0.0.0.0"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
+  mongodb:
+    image: mongo:latest
+    command: [--replSet, my-replica-set, --bind_ip_all, --port, "27017"]
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: test $$(mongosh --port 27017 --quiet --eval "try {rs.initiate({_id:'my-replica-set',members:[{_id:0,host:\"mongodb:27017\"}]})} catch(e) {rs.status().ok}") -eq 1
+      interval: 10s
+      start_period: 30s
+    volumes:
+      - ./mongo/init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo/data:/data/db
+
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb
+    ports:
+      - "8000:8000"
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: locks
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  hazelcast:
+    image: hazelcast/hazelcast:latest
+    container_name: hazelcast
+    ports:
+      - "5701:5701"
+    environment:
+      - HZ_CLUSTERNAME=dev
+      - HZ_NETWORK_PUBLICADDRESS=hazelcast:5701
+      - HZ_MAP_DEFAULT_TTL=60s
+      - JAVA_OPTS=-Dhazelcast.config=/data/hazelcast.xml
+    volumes:
+      - ./hazelcast/init.xml:/data/hazelcast.xml
+
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: etcd
+    environment:
+      ALLOW_NONE_AUTHENTICATION: yes
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./data/zookeeper:/bitnami/zookeeper
