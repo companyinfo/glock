@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // MongoLock is an implementation of the distributed Lock interface using MongoDB.

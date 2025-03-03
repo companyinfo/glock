@@ -7,7 +7,7 @@ import (
 
 	"github.com/hazelcast/hazelcast-go-client"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // HazelcastLock is an implementation of the distributed Lock interface using Hazelcast.

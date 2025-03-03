@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // PostgresLock is an implementation of the distributed Lock interface using PostgresSQL.

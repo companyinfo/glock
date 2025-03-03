@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-zookeeper/zk"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // ZooKeeperLock is an implementation of the distributed Lock interface using ZooKeeper.

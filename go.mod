@@ -1,4 +1,4 @@
-module github.com/companyinfo/glock
+module go.companyinfo.dev/glock
 
 go 1.23
 

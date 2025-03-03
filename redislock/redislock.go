@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-redis/redis/v8"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // RedisLock is an implementation of the distributed Lock interface using Redis.
