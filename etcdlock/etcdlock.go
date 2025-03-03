@@ -7,7 +7,7 @@ import (
 
 	"go.etcd.io/etcd/client/v3"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // EtcdLock is an implementation of the distributed Lock interface using etcd.

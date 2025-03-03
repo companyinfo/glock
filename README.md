@@ -15,7 +15,7 @@ A **Golang Distributed Lock** package with multiple backends, supporting **Dynam
 
 ## Installation 📦
 ```sh
-go get github.com/companyinfo/glock
+go get go.companyinfo.dev/glock
 ```
 
 ## Usage 🛠️
@@ -34,8 +34,8 @@ import (
     "github.com/go-logr/logr"
     "github.com/go-redis/redis/v8"
 
-    "github.com/companyinfo/glock"
-    "github.com/companyinfo/glock/redislock"
+    "go.companyinfo.dev/glock"
+    "go.companyinfo.dev/glock/redislock"
 )
 
 func main() {

@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/consul/api"
 
-	"github.com/companyinfo/glock"
+	"go.companyinfo.dev/glock"
 )
 
 // ConsulLock is an implementation of the distributed Lock interface using Consul.

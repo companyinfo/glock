@@ -16,15 +16,15 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/companyinfo/glock"
-	"github.com/companyinfo/glock/consullock"
-	"github.com/companyinfo/glock/dynamolock"
-	"github.com/companyinfo/glock/etcdlock"
-	"github.com/companyinfo/glock/hazelcastlock"
-	"github.com/companyinfo/glock/mongolock"
-	"github.com/companyinfo/glock/postgreslock"
-	"github.com/companyinfo/glock/redislock"
-	"github.com/companyinfo/glock/zookeeperlock"
+	"go.companyinfo.dev/glock"
+	"go.companyinfo.dev/glock/consullock"
+	"go.companyinfo.dev/glock/dynamolock"
+	"go.companyinfo.dev/glock/etcdlock"
+	"go.companyinfo.dev/glock/hazelcastlock"
+	"go.companyinfo.dev/glock/mongolock"
+	"go.companyinfo.dev/glock/postgreslock"
+	"go.companyinfo.dev/glock/redislock"
+	"go.companyinfo.dev/glock/zookeeperlock"
 )
 
 type testDistributedLock struct {
