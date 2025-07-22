@@ -1,4 +1,4 @@
-# Golang Distributed Lock
+# Golang Distributed Lock (glock)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/companyinfo/glock)](https://goreportcard.com/report/github.com/companyinfo/glock)
 [![License](https://img.shields.io/github/license/companyinfo/glock)](LICENSE)
