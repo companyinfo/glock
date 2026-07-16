@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/v2/bson"
+	"go.mongodb.org/mongo-driver/v2/mongo"
 
 	"go.companyinfo.dev/glock"
 )
@@ -55,7 +55,7 @@ func (m *MongoLock) Acquire(ctx context.Context, lockID string, ttl int64) error
 	defer session.EndSession(ctx)
 
 	// Atomic transaction to insert only if the lock doesn't exist.
-	err = mongo.WithSession(ctx, session, func(sc mongo.SessionContext) error {
+	err = mongo.WithSession(ctx, session, func(sc context.Context) error {
 		err = session.StartTransaction()
 		if err != nil {
 			return err
@@ -125,7 +125,7 @@ func (m *MongoLock) Release(ctx context.Context, lockID string) error {
 	defer session.EndSession(ctx)
 
 	// Atomic transaction to delete the lock
-	err = mongo.WithSession(ctx, session, func(sc mongo.SessionContext) error {
+	err = mongo.WithSession(ctx, session, func(sc context.Context) error {
 		err = session.StartTransaction()
 		if err != nil {
 			return err
@@ -236,7 +236,7 @@ func (m *MongoLock) Renew(ctx context.Context, lockID string, ttl int64) error {
 	defer session.EndSession(ctx)
 
 	// Atomic transaction to update the TTL
-	err = mongo.WithSession(ctx, session, func(sc mongo.SessionContext) error {
+	err = mongo.WithSession(ctx, session, func(sc context.Context) error {
 		err = session.StartTransaction()
 		if err != nil {
 			return err

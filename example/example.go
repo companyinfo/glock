@@ -13,8 +13,8 @@ import (
 	"github.com/hashicorp/consul/api"
 	"github.com/hazelcast/hazelcast-go-client"
 	clientv3 "go.etcd.io/etcd/client/v3"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 
 	"go.companyinfo.dev/glock"
 	"go.companyinfo.dev/glock/consullock"
@@ -126,7 +126,7 @@ func (t *testDistributedLock) withZooKeeper() *testDistributedLock {
 }
 
 func (t *testDistributedLock) withMongoDB() *testDistributedLock {
-	client, err := mongo.Connect(context.TODO(),
+	client, err := mongo.Connect(
 		options.Client().ApplyURI("mongodb://localhost:27017/?replicaSet=rs0"))
 	if err != nil {
 		panic(err)
